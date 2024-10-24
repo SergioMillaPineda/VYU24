@@ -37,7 +37,7 @@
             const string exitOption = "7";
 
             // customized input user has to enter in order to leave program
-            const string quitSelection = "x";
+            const char quitSelection = 'x';
 
             // - data model to manage user navigation
             string? userOption;
@@ -216,13 +216,14 @@
                                 break;
                         }
                         Console.WriteLine();
-                        Console.Write($"Press any key except {quitSelection.ToUpper()} to continue, or press {quitSelection.ToUpper()} to quit: ");
-                        userOption = Console.ReadLine()?.Trim().ToLower();
-                        if (userOption == quitSelection)
+                        Console.Write($"Press any key to continue, or {quitSelection.ToString().ToUpper()} to exit main menu: ");
+                        ConsoleKeyInfo userKeyPressed = Console.ReadKey();
+                        if (userKeyPressed.KeyChar.ToString().ToLower() == quitSelection.ToString().ToLower())
                         {
                             exitProgram = true;
                             Console.WriteLine();
-                            Console.WriteLine($"Your current money amounts to {userMoney:0.00}{currencySymbol}");
+                            Console.WriteLine($"Your current money amounts to {userMoney:0.00}{currencySymbol}, press any key to leave...");
+                            Console.ReadKey();
                         }
                         break;
                     case exitOption:
