@@ -9,6 +9,16 @@
             const decimal maxOutcome = 1000;
             const decimal maxDebtAllowed = -200;
 
+            // bank business available currencies
+            List<string> AvailableCurrencies = new()
+            {
+                "EUR",
+                "USD"
+            };
+
+            // customized currency value
+            string currency = AvailableCurrencies[0];
+
             // data model containing the information that will be managed by this program
             decimal userMoney = 0;
             List<decimal> movementAmountList = new();
@@ -26,12 +36,22 @@
             const string showMoneyOption = "6";
             const string exitOption = "7";
 
+            // customized input user has to enter in order to leave program
             const string quitSelection = "x";
+
             // - data model to manage user navigation
             string? userOption;
             bool exitProgram = false;
 
-            // program implementation code
+            // - business->presentation mapping: data model currency -> currency symbol to show on console
+            Dictionary<string, string> currencySymbolDictionary = new()
+            {
+                { "EUR", "€" },
+                { "USD", "$" }
+            };
+            string currencySymbol = currencySymbolDictionary[currency];
+
+            // main menu full implementation code
             do
             {
                 Console.Clear();
@@ -75,7 +95,7 @@
                                 }
                                 else if (parsedIncome > maxIncome)
                                 {
-                                    outputMsg = $"Income cannot exceed {maxIncome:0.00} €";
+                                    outputMsg = $"Income cannot exceed {maxIncome:0.00}{currencySymbol}";
                                 }
 
                                 if (outputMsg == "")
@@ -83,7 +103,7 @@
                                     userMoney += parsedIncome;
                                     movementAmountList.Add(parsedIncome);
                                     movementInstantList.Add(DateTime.Now);
-                                    outputMsg = $"Added {parsedIncome}€. Your current money amounts to {userMoney:0.00} €";
+                                    outputMsg = $"Added {parsedIncome}{currencySymbol}. Your current money amounts to {userMoney:0.00}{currencySymbol}";
                                 }
 
                                 Console.WriteLine();
@@ -105,11 +125,11 @@
                                 }
                                 else if (parsedOutcome > maxOutcome)
                                 {
-                                    outputMsg = $"Outcome cannot exceed {maxOutcome:0.00} €";
+                                    outputMsg = $"Outcome cannot exceed {maxOutcome:0.00}{currencySymbol}";
                                 }
                                 else if (userMoney - parsedOutcome < maxDebtAllowed)
                                 {
-                                    outputMsg = $"debt cannot surpass {Math.Abs(maxDebtAllowed):0.00} €";
+                                    outputMsg = $"debt cannot surpass {Math.Abs(maxDebtAllowed):0.00}{currencySymbol}";
                                 }
 
                                 if (outputMsg == "")
@@ -117,7 +137,7 @@
                                     userMoney -= parsedOutcome;
                                     movementAmountList.Add(-parsedOutcome);
                                     movementInstantList.Add(DateTime.Now);
-                                    outputMsg = $"Retired {parsedOutcome}€. Your current money amounts to {userMoney:0.00}€";
+                                    outputMsg = $"Retired {parsedOutcome}{currencySymbol}. Your current money amounts to {userMoney:0.00}{currencySymbol}";
                                 }
 
                                 Console.WriteLine();
@@ -137,9 +157,9 @@
                                     Console.WriteLine();
                                     for (int i = 0; i < movementAmountList.Count; i++)
                                     {
-                                        Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {movementAmountList[i]:0.00}€");
+                                        Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {movementAmountList[i]:0.00}{currencySymbol}");
                                     }
-                                    Console.WriteLine($"              TOTAL | {userMoney:0.00}€");
+                                    Console.WriteLine($"              TOTAL | {userMoney:0.00}{currencySymbol}");
                                 }
                                 break;
                             case listIncomesOption:
@@ -160,10 +180,10 @@
                                         if (movementAmountList[i] > 0)
                                         {
                                             totalIncomes += movementAmountList[i];
-                                            Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {movementAmountList[i]:0.00}€");
+                                            Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {movementAmountList[i]:0.00}{currencySymbol}");
                                         }
                                     }
-                                    Console.WriteLine($"              TOTAL | {totalIncomes:0.00}€");
+                                    Console.WriteLine($"              TOTAL | {totalIncomes:0.00}{currencySymbol}");
                                 }
                                 break;
                             case listOutcomesOption:
@@ -184,15 +204,15 @@
                                         if (movementAmountList[i] < 0)
                                         {
                                             totalOutcomes -= movementAmountList[i];
-                                            Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {-movementAmountList[i]:0.00}€");
+                                            Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {-movementAmountList[i]:0.00}{currencySymbol}");
                                         }
                                     }
-                                    Console.WriteLine($"              TOTAL | {totalOutcomes:0.00}€");
+                                    Console.WriteLine($"              TOTAL | {totalOutcomes:0.00}{currencySymbol}");
                                 }
                                 break;
                             case showMoneyOption:
                                 Console.WriteLine();
-                                Console.WriteLine($"Your current money amounts to {userMoney:0.00}€");
+                                Console.WriteLine($"Your current money amounts to {userMoney:0.00}{currencySymbol}");
                                 break;
                         }
                         Console.WriteLine();
@@ -202,7 +222,7 @@
                         {
                             exitProgram = true;
                             Console.WriteLine();
-                            Console.WriteLine($"Your current money amounts to {userMoney:0.00}€");
+                            Console.WriteLine($"Your current money amounts to {userMoney:0.00}{currencySymbol}");
                         }
                         break;
                     case exitOption:
