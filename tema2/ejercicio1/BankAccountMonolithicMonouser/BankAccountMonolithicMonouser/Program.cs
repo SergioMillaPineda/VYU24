@@ -51,19 +51,24 @@
             };
             string currencySymbol = currencySymbolDictionary[currency];
 
+            // abstraction of line jump string
+            const string newLine = "\r\n";
+
             // main menu full implementation code
             do
             {
                 Console.Clear();
-                Console.WriteLine("======================");
-                Console.WriteLine($"{incomeOption}. Money income");
-                Console.WriteLine($"{outcomeOption}. Money outcome");
-                Console.WriteLine($"{listAllOption}. List all movements");
-                Console.WriteLine($"{listIncomesOption}. List incomes");
-                Console.WriteLine($"{listOutcomesOption}. List outcomes");
-                Console.WriteLine($"{showMoneyOption}. Show current money");
-                Console.WriteLine($"{exitOption}. Exit");
-                Console.WriteLine("======================");
+                Console.Write(
+                    $"======================{newLine}" +
+                    $"{incomeOption}. Money income{newLine}" +
+                    $"{outcomeOption}. Money outcome{newLine}" +
+                    $"{listAllOption}. List all movements{newLine}" +
+                    $"{listIncomesOption}. List incomes{newLine}" +
+                    $"{listOutcomesOption}. List outcomes{newLine}" +
+                    $"{showMoneyOption}. Show current money{newLine}" +
+                    $"{exitOption}. Exit{newLine}" +
+                    $"======================{newLine}"
+                );
                 Console.Write("Select an option: ");
 
                 userOption = Console.ReadLine()?.Trim();
@@ -150,10 +155,13 @@
                                 }
                                 else
                                 {
-                                    Console.WriteLine();
-                                    Console.WriteLine("=====================");
-                                    Console.WriteLine("=== All movements ===");
-                                    Console.WriteLine("=====================");
+                                    Console.Write(
+                                        $"{newLine}" +
+                                        $"====================={newLine}" +
+                                        $"=== All movements ==={newLine}" +
+                                        $"====================={newLine}" +
+                                        $"{newLine}"
+                                    );
                                     Console.WriteLine();
                                     for (int i = 0; i < movementAmountList.Count; i++)
                                     {
@@ -169,11 +177,13 @@
                                 }
                                 else
                                 {
-                                    Console.WriteLine();
-                                    Console.WriteLine("=====================");
-                                    Console.WriteLine("==== All incomes ====");
-                                    Console.WriteLine("=====================");
-                                    Console.WriteLine();
+                                    Console.Write(
+                                        $"{newLine}" +
+                                        $"==================={newLine}" +
+                                        $"=== All incomes ==={newLine}" +
+                                        $"==================={newLine}" +
+                                        $"{newLine}"
+                                    );
                                     decimal totalIncomes = 0;
                                     for (int i = 0; i < movementAmountList.Count; i++)
                                     {
@@ -193,11 +203,13 @@
                                 }
                                 else
                                 {
-                                    Console.WriteLine();
-                                    Console.WriteLine("====================");
-                                    Console.WriteLine("=== All outcomes ===");
-                                    Console.WriteLine("====================");
-                                    Console.WriteLine();
+                                    Console.Write(
+                                        $"{newLine}" +
+                                        $"===================={newLine}" +
+                                        $"=== All outcomes ==={newLine}" +
+                                        $"===================={newLine}" +
+                                        $"{newLine}"
+                                    );
                                     decimal totalOutcomes = 0;
                                     for (int i = 0; i < movementAmountList.Count; i++)
                                     {
@@ -222,7 +234,7 @@
                         {
                             exitProgram = true;
                             Console.WriteLine();
-                            Console.WriteLine($"Your current money amounts to {userMoney:0.00}{currencySymbol}, press any key to leave...");
+                            Console.Write($"Your current money amounts to {userMoney:0.00}{currencySymbol}, press any key to leave...");
                             Console.ReadKey();
                         }
                         break;
@@ -231,7 +243,7 @@
                         break;
                     default:
                         Console.WriteLine();
-                        Console.WriteLine($"{userOption} is not a valid option. Press any key to try again...");
+                        Console.Write($"{userOption} is not a valid option. Press any key to try again...");
                         Console.ReadKey();
                         break;
                 }
