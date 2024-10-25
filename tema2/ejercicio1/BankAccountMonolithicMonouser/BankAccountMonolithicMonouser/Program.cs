@@ -229,6 +229,11 @@
                     case exitOption:
                         exitProgram = true;
                         break;
+                    default:
+                        Console.WriteLine();
+                        Console.WriteLine($"{userOption} is not a valid option. Press any key to try again...");
+                        Console.ReadKey();
+                        break;
                 }
             } while (!exitProgram);
         }
