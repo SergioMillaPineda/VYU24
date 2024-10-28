@@ -20,6 +20,7 @@
             string currency = AvailableCurrencies[0];
 
             // data model containing the information that will be managed by this program
+            const int invalidIndex = -1;
             List<string> AccountNumberList = new() { "1000", "2000", "3000" };
             List<string> AccountPinList = new() { "1111", "2222", "3333" };
             List<decimal> userMoneyList = new() { 0, 50, 200 };
@@ -49,6 +50,10 @@
             // customized input user has to enter in order to leave program
             const char quitSelection = 'x';
 
+            // abstraction of line jump string
+            const string newLine = "\r\n";
+
+
             // - data model to manage user navigation
             string? userOption;
             bool exitProgram = false;
@@ -66,6 +71,15 @@
             do
             {
                 Console.Clear();
+                // ONLY on debug mode: show available account numbers and pins to allow tester to choose
+#if DEBUG
+                Console.WriteLine($"Available accounts (for debug purposes only):");
+                for (int i = 0; i < AccountNumberList.Count; i++)
+                {
+                    Console.WriteLine($"- {AccountNumberList[i]} -> PIN {AccountPinList[i]}");
+                }
+                Console.WriteLine();
+#endif
                 Console.Write($"Enter account number (or {quitSelection.ToString().ToUpper()} to quit): ");
                 string? accountNumberAsString = Console.ReadLine()?.Trim();
                 if (accountNumberAsString?.ToLower() != quitSelection.ToString().ToLower())
@@ -73,16 +87,16 @@
                     Console.Write("Enter pin: ");
                     string? pinAsString = Console.ReadLine()?.Trim();
 
-                    int autenticatedUserIndex = 0;
+                    int autenticatedUserIndex = invalidIndex;
                     for (int i = 0; i < AccountNumberList.Count; i++)
                     {
                         if (AccountNumberList[i] == accountNumberAsString && AccountPinList[i] == pinAsString)
                         {
-                            autenticatedUserIndex = i+1;
+                            autenticatedUserIndex = i;
                             break;
                         }
                     }
-                    if (autenticatedUserIndex == 0)
+                    if (autenticatedUserIndex == invalidIndex)
                     {
                         Console.WriteLine("Wrong credentials. Press any key to retry...");
                         Console.ReadKey();
@@ -96,15 +110,18 @@
                         do
                         {
                             Console.Clear();
-                            Console.WriteLine("======================");
-                            Console.WriteLine($"{incomeOption}. Money income");
-                            Console.WriteLine($"{outcomeOption}. Money outcome");
-                            Console.WriteLine($"{listAllOption}. List all movements");
-                            Console.WriteLine($"{listIncomesOption}. List incomes");
-                            Console.WriteLine($"{listOutcomesOption}. List outcomes");
-                            Console.WriteLine($"{showMoneyOption}. Show current money");
-                            Console.WriteLine($"{exitOption}. Exit");
-                            Console.WriteLine("======================");
+                            Console.Write(
+                                $"Account {accountNumberAsString}{newLine}" +
+                                $"======================{newLine}" +
+                                $"{incomeOption}. Money income{newLine}" +
+                                $"{outcomeOption}. Money outcome{newLine}" +
+                                $"{listAllOption}. List all movements{newLine}" +
+                                $"{listIncomesOption}. List incomes{newLine}" +
+                                $"{listOutcomesOption}. List outcomes{newLine}" +
+                                $"{showMoneyOption}. Show current money{newLine}" +
+                                $"{exitOption}. Exit{newLine}" +
+                                $"======================{newLine}"
+                            );
                             Console.Write("Select an option: ");
 
                             userOption = Console.ReadLine()?.Trim();
@@ -191,11 +208,13 @@
                                             }
                                             else
                                             {
-                                                Console.WriteLine();
-                                                Console.WriteLine("=====================");
-                                                Console.WriteLine("=== All movements ===");
-                                                Console.WriteLine("=====================");
-                                                Console.WriteLine();
+                                                Console.Write(
+                                                    $"{newLine}" +
+                                                    $"====================={newLine}" +
+                                                    $"=== All movements ==={newLine}" +
+                                                    $"====================={newLine}" +
+                                                    $"{newLine}"
+                                                );
                                                 for (int i = 0; i < movementAmountList.Count; i++)
                                                 {
                                                     Console.WriteLine($"{movementInstantList[i]:dd/MM/yyyy-hh:mm:ss} | {movementAmountList[i]:0.00}{currencySymbol}");
@@ -210,11 +229,13 @@
                                             }
                                             else
                                             {
-                                                Console.WriteLine();
-                                                Console.WriteLine("=====================");
-                                                Console.WriteLine("==== All incomes ====");
-                                                Console.WriteLine("=====================");
-                                                Console.WriteLine();
+                                                Console.Write(
+                                                    $"{newLine}" +
+                                                    $"==================={newLine}" +
+                                                    $"=== All incomes ==={newLine}" +
+                                                    $"==================={newLine}" +
+                                                    $"{newLine}"
+                                                );
                                                 decimal totalIncomes = 0;
                                                 for (int i = 0; i < movementAmountList.Count; i++)
                                                 {
@@ -234,11 +255,13 @@
                                             }
                                             else
                                             {
-                                                Console.WriteLine();
-                                                Console.WriteLine("====================");
-                                                Console.WriteLine("=== All outcomes ===");
-                                                Console.WriteLine("====================");
-                                                Console.WriteLine();
+                                                Console.Write(
+                                                    $"{newLine}" +
+                                                    $"===================={newLine}" +
+                                                    $"=== All outcomes ==={newLine}" +
+                                                    $"===================={newLine}" +
+                                                    $"{newLine}"
+                                                );
                                                 decimal totalOutcomes = 0;
                                                 for (int i = 0; i < movementAmountList.Count; i++)
                                                 {
@@ -269,6 +292,11 @@
                                     break;
                                 case exitOption:
                                     exitMainMenu = true;
+                                    break;
+                                default:
+                                    Console.WriteLine();
+                                    Console.Write($"{userOption} is not a valid option. Press any key to try again...");
+                                    Console.ReadKey();
                                     break;
                             }
                         } while (!exitMainMenu);
