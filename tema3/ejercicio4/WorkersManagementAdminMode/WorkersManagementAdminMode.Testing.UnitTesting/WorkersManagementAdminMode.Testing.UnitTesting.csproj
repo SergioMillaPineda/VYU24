@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WorkersManagementAdminMode.DistributedServices.WebAPI\WorkersManagementAdminMode.DistributedServices.WebAPI.csproj" />
     <ProjectReference Include="..\WorkersManagementAdminMode.Domain\WorkersManagementAdminMode.Domain.csproj" />
     <ProjectReference Include="..\WorkersManagementAdminMode.Library.Impl\WorkersManagementAdminMode.Library.Impl.csproj" />
   </ItemGroup>

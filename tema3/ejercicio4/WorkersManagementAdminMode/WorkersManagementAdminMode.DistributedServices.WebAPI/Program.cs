@@ -1,5 +1,7 @@
 using WorkersManagementAdminMode.Library.Impl.DependencyInjectionExtension;
 using WorkersManagementAdminMode.Infrastructure.Impl.DependencyInjectionExtension;
+using WorkersManagementAdminMode.Infrastructure.Impl.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace WorkersManagementAdminMode.DistributedServices.WebAPI
 {
@@ -12,6 +14,8 @@ namespace WorkersManagementAdminMode.DistributedServices.WebAPI
             // Add services to the container.
             builder.Services.AddServices();
             builder.Services.AddRepositories();
+            builder.Services.AddDbContext<WorkersManagementAdminModeContext>(options =>
+            options.UseSqlServer(builder.Configuration["WorkersManagementAdminModeContext"]));
 
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
