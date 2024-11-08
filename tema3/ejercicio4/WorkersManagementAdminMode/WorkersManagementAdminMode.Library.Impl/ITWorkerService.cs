@@ -7,7 +7,7 @@ using WorkersManagementAdminMode.XCutting.Enums;
 
 namespace WorkersManagementAdminMode.Library.Impl
 {
-    internal class ITWorkerService : IITWorkerService
+    public class ITWorkerService : IITWorkerService
     {
         private readonly IITWorkersRepository _iTWorkersRepository;
 
