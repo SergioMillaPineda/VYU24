@@ -15,13 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-XCutting", "5-XCutting", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkersManagementAdminMode.Domain", "WorkersManagementAdminMode.Domain\WorkersManagementAdminMode.Domain.csproj", "{A094E758-76ED-4E4E-9A2D-C54AD9EE2397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.Library.Contracts", "WorkersManagementAdminMode.Library.Contracts\WorkersManagementAdminMode.Library.Contracts.csproj", "{7015DD27-741B-4829-90C9-B2FE695A988C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkersManagementAdminMode.Library.Contracts", "WorkersManagementAdminMode.Library.Contracts\WorkersManagementAdminMode.Library.Contracts.csproj", "{7015DD27-741B-4829-90C9-B2FE695A988C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.Library.Impl", "WorkersManagementAdminMode.Library.Impl\WorkersManagementAdminMode.Library.Impl.csproj", "{04BE5E04-1E44-495F-84A5-C1FE9D4A1F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkersManagementAdminMode.Library.Impl", "WorkersManagementAdminMode.Library.Impl\WorkersManagementAdminMode.Library.Impl.csproj", "{04BE5E04-1E44-495F-84A5-C1FE9D4A1F05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Testing", "6-Testing", "{552D8B9B-D377-4ABA-9138-58BB8354DA5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.Testing.UnitTesting", "WorkersManagementAdminMode.Testing.UnitTesting\WorkersManagementAdminMode.Testing.UnitTesting.csproj", "{A65E3A9A-2F78-4881-9301-59D347CE9C97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkersManagementAdminMode.Testing.UnitTesting", "WorkersManagementAdminMode.Testing.UnitTesting\WorkersManagementAdminMode.Testing.UnitTesting.csproj", "{A65E3A9A-2F78-4881-9301-59D347CE9C97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.XCutting.Enums", "WorkersManagementAdminMode.XCutting.Enums\WorkersManagementAdminMode.XCutting.Enums.csproj", "{EEB512F8-7C90-4FF6-86CD-E5A93FB42374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.Infrastructure.Contracts", "WorkersManagementAdminMode.Infrastructure.Contracts\WorkersManagementAdminMode.Infrastructure.Contracts.csproj", "{AB7EE369-C038-4CD0-B197-74F3A12371B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.Infrastructure.Impl", "WorkersManagementAdminMode.Infrastructure.Impl\WorkersManagementAdminMode.Infrastructure.Impl.csproj", "{CED496C1-C169-48A4-B6AD-C8C63806AF8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkersManagementAdminMode.DistributedServices.WebAPI", "WorkersManagementAdminMode.DistributedServices.WebAPI\WorkersManagementAdminMode.DistributedServices.WebAPI.csproj", "{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +53,22 @@ Global
 		{A65E3A9A-2F78-4881-9301-59D347CE9C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A65E3A9A-2F78-4881-9301-59D347CE9C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A65E3A9A-2F78-4881-9301-59D347CE9C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB512F8-7C90-4FF6-86CD-E5A93FB42374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB512F8-7C90-4FF6-86CD-E5A93FB42374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB512F8-7C90-4FF6-86CD-E5A93FB42374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB512F8-7C90-4FF6-86CD-E5A93FB42374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7EE369-C038-4CD0-B197-74F3A12371B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7EE369-C038-4CD0-B197-74F3A12371B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7EE369-C038-4CD0-B197-74F3A12371B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7EE369-C038-4CD0-B197-74F3A12371B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED496C1-C169-48A4-B6AD-C8C63806AF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED496C1-C169-48A4-B6AD-C8C63806AF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED496C1-C169-48A4-B6AD-C8C63806AF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED496C1-C169-48A4-B6AD-C8C63806AF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +78,10 @@ Global
 		{7015DD27-741B-4829-90C9-B2FE695A988C} = {BB3F263D-6800-4C76-8785-840C0B4F1D04}
 		{04BE5E04-1E44-495F-84A5-C1FE9D4A1F05} = {BB3F263D-6800-4C76-8785-840C0B4F1D04}
 		{A65E3A9A-2F78-4881-9301-59D347CE9C97} = {552D8B9B-D377-4ABA-9138-58BB8354DA5D}
+		{EEB512F8-7C90-4FF6-86CD-E5A93FB42374} = {630AC070-1664-4ADF-8E12-028663E2A4F1}
+		{AB7EE369-C038-4CD0-B197-74F3A12371B5} = {A04CAC4F-9C63-4026-948E-C6B5F6200D01}
+		{CED496C1-C169-48A4-B6AD-C8C63806AF8A} = {A04CAC4F-9C63-4026-948E-C6B5F6200D01}
+		{D0FF4A84-EA64-42D4-A1B1-0EB0E698F64F} = {6AD11EDA-FC09-4720-9C7A-EC029FD5E149}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DD58F04-8E18-4D34-BF3B-89DADA296A1B}

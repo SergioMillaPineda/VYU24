@@ -4,6 +4,6 @@ namespace WorkersManagementAdminMode.Library.Contracts
 {
     public interface IITWorkerService
     {
-        void Register(RegisterITWorkerRqDTO registerITWorkerRqDTO);
+        RegisterITWorkerRsDTO Register(RegisterITWorkerRqDTO registerITWorkerRqDTO);
     }
 }

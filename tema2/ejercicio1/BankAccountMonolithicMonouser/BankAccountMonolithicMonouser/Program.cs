@@ -17,7 +17,7 @@
             };
 
             // customized currency value
-            string currency = AvailableCurrencies[0];
+            string currency = AvailableCurrencies[1];
 
             // data model containing the information that will be managed by this program
             decimal userMoney = 0;
