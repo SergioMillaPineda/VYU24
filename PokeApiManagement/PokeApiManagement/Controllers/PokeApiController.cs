@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using PokeApiManagement.DbContext;
 using PokeApiManagement.EntitiesDB;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +23,19 @@ namespace PokeApiManagement.Controllers
             char firstCharacter = firstCharacterAsString[0];
 
             PokeApiContext dbContext = new();
+            
+            using (SqlConnection connection = new(dbContext.Database.GetDbConnection().ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException)
+                {
+                    return BadRequest("Database is not reachable");
+                }
+            }
+
             PokemonNameList domainModel;
             using HttpClient client = new();
             try
