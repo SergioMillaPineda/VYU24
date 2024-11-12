@@ -1,0 +1,5 @@
+Desarrollar un servicio web que reciba como entrada de usuario una letra y un año entre 1961 y 2018,
+y devuelva la lista de países que empiezan por la letra indicada y su población para el año indicado.
+
+Para obtener la información se consultará la API gratuita https://countriesnow.space/api,
+accediendo a su endpoint https://countriesnow.space/api/v0.1/countries/population con petición GET

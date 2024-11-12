@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CountriesManagement.Domain\CountriesManagement.Domain.csproj" />
+    <ProjectReference Include="..\CountriesManagement.Enums\CountriesManagement.Enums.csproj" />
+    <ProjectReference Include="..\CountriesManagement.Infrastructure.Contracts\CountriesManagement.Infrastructure.Contracts.csproj" />
+    <ProjectReference Include="..\CountriesManagement.Library.Contracts\CountriesManagement.Library.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
