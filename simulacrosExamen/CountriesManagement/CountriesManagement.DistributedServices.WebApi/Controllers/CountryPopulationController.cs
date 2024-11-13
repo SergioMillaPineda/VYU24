@@ -17,13 +17,8 @@ namespace CountriesManagement.DistributedServices.WebApi.Controllers
         }
 
         [HttpGet("GetByInitialAndYear")]
-        public async Task<IActionResult> GetByInitialAndYear(char countryInitial, int year)
+        public async Task<IActionResult> GetByInitialAndYear([FromQuery] QueryDataDto rqDto)
         {
-            QueryDataDto rqDto = new()
-            {
-                countryInitial = countryInitial,
-                year = year
-            };
             GetPopByInitialAndYearRsDto rsDto =
                 await _countryPopulationService.GetPopulationByInitialAndYear(rqDto);
 
@@ -33,7 +28,7 @@ namespace CountriesManagement.DistributedServices.WebApi.Controllers
             }
             else if (rsDto.data != null)
             {
-                return Ok(MapRsDataToOutputDesiredFormat(rsDto.data, year));
+                return Ok(MapRsDataToOutputDesiredFormat(rsDto.data, rqDto.Year));
             }
             else
             {

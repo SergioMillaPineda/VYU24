@@ -26,7 +26,7 @@ namespace CountriesManagement.UnitTests.Library
                 .Setup(x => x.GetPopulationForAllCountries())
                 .Returns(Task.FromResult<AllCountriesPopulationEntity?>(new AllCountriesPopulationEntity
                 {
-                    Title = "Title",
+                    Title = "",
                     Error = false,
                     Data = new List<CountryPopulationEntity>()
                     {
@@ -47,8 +47,8 @@ namespace CountriesManagement.UnitTests.Library
             CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
-                countryInitial = VALIDCOUNTRYINITIAL,
-                year = VALIDYEAR
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
             };
 
             // Act
@@ -72,8 +72,8 @@ namespace CountriesManagement.UnitTests.Library
             CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
-                countryInitial = INVALIDCOUNTRYINITIAL,
-                year = VALIDYEAR
+                CountryInitial = INVALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
             };
 
             // Act
@@ -95,8 +95,8 @@ namespace CountriesManagement.UnitTests.Library
             CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
-                countryInitial = VALIDCOUNTRYINITIAL,
-                year = INVALIDYEAR
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = INVALIDYEAR
             };
 
             // Act
@@ -118,8 +118,8 @@ namespace CountriesManagement.UnitTests.Library
             CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
-                countryInitial = INVALIDCOUNTRYINITIAL,
-                year = INVALIDYEAR
+                CountryInitial = INVALIDCOUNTRYINITIAL,
+                Year = INVALIDYEAR
             };
 
             // Act
@@ -143,8 +143,8 @@ namespace CountriesManagement.UnitTests.Library
             CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
-                countryInitial = VALIDCOUNTRYINITIAL,
-                year = VALIDYEAR
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
             };
 
             // Act

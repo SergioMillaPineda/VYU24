@@ -2,7 +2,7 @@
 {
     public class QueryDataDto
     {
-        public char countryInitial;
-        public int year;
+        public char CountryInitial { get; set; }
+        public int Year { get; set; }
     }
 }

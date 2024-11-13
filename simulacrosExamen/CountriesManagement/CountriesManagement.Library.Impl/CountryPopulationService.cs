@@ -59,7 +59,7 @@ namespace CountriesManagement.Library.Impl
 
         private static QueryData MapDtoToDomain(QueryDataDto queryDataDto)
         {
-            return new QueryData(queryDataDto.countryInitial, queryDataDto.year);
+            return new QueryData(queryDataDto.CountryInitial, queryDataDto.Year);
         }
 
         private static List<GetPopByInitialAndYearErrorEnum> ValidateInput(QueryData queryData)

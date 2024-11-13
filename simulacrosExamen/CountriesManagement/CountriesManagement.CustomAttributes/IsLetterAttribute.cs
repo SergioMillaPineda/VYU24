@@ -4,9 +4,6 @@ namespace CountriesManagement.CustomAttributes
 {
     public class IsLetterAttribute : ValidationAttribute
     {
-        public IsLetterAttribute()
-        { }
-
         protected override ValidationResult? IsValid(
                object? value, ValidationContext validationContext)
         {

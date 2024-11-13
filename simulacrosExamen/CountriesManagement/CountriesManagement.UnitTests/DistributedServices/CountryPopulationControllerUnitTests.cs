@@ -25,17 +25,22 @@ namespace CountriesManagement.UnitTests.DistributedServices
             Mock<ICountryPopulationService> mockedRepository = new();
             mockedRepository
                 .Setup(x => x.GetPopulationByInitialAndYear(It.IsAny<QueryDataDto>()))
-                .Returns(Task.FromResult(new GetPopByInitialAndYearRsDto
+                .ReturnsAsync(new GetPopByInitialAndYearRsDto
                 {
                     data = new List<CountryYearPopulation>
                     {
                         new(NAMEFORVALIDCOUNTRY, VALIDYEAR, POPULATIONFORVALIDCOUNTRY)
                     }
-                }));
+                });
             CountryPopulationController sut = new(mockedRepository.Object);
+            QueryDataDto rqDto = new()
+            {
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
+            };
 
             // Act
-            IActionResult result = await sut.GetByInitialAndYear(VALIDCOUNTRYINITIAL, VALIDYEAR);
+            IActionResult result = await sut.GetByInitialAndYear(rqDto);
 
             // Assert
             Assert.NotNull(result);
@@ -57,9 +62,14 @@ namespace CountriesManagement.UnitTests.DistributedServices
                     }
                 }));
             CountryPopulationController sut = new(mockedRepository.Object);
+            QueryDataDto rqDto = new()
+            {
+                CountryInitial = INVALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
+            };
 
             // Act
-            IActionResult result = await sut.GetByInitialAndYear(INVALIDCOUNTRYINITIAL, VALIDYEAR);
+            IActionResult result = await sut.GetByInitialAndYear(rqDto);
 
             // Assert
             Assert.NotNull(result);
@@ -85,9 +95,14 @@ namespace CountriesManagement.UnitTests.DistributedServices
                     }
                 }));
             CountryPopulationController sut = new(mockedRepository.Object);
+            QueryDataDto rqDto = new()
+            {
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = INVALIDYEAR
+            };
 
             // Act
-            IActionResult result = await sut.GetByInitialAndYear(VALIDCOUNTRYINITIAL, INVALIDYEAR);
+            IActionResult result = await sut.GetByInitialAndYear(rqDto);
 
             // Assert
             Assert.NotNull(result);
@@ -113,9 +128,14 @@ namespace CountriesManagement.UnitTests.DistributedServices
                     }
                 }));
             CountryPopulationController sut = new(mockedRepository.Object);
+            QueryDataDto rqDto = new()
+            {
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = INVALIDYEAR
+            };
 
             // Act
-            IActionResult result = await sut.GetByInitialAndYear(VALIDCOUNTRYINITIAL, INVALIDYEAR);
+            IActionResult result = await sut.GetByInitialAndYear(rqDto);
 
             // Assert
             Assert.NotNull(result);
@@ -142,9 +162,14 @@ namespace CountriesManagement.UnitTests.DistributedServices
                     }
                 }));
             CountryPopulationController sut = new(mockedRepository.Object);
+            QueryDataDto rqDto = new()
+            {
+                CountryInitial = INVALIDCOUNTRYINITIAL,
+                Year = INVALIDYEAR
+            };
 
             // Act
-            IActionResult result = await sut.GetByInitialAndYear(INVALIDCOUNTRYINITIAL, INVALIDYEAR);
+            IActionResult result = await sut.GetByInitialAndYear(rqDto);
 
             // Assert
             Assert.NotNull(result);
