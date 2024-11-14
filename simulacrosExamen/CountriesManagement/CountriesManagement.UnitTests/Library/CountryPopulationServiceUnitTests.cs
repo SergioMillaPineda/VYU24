@@ -19,37 +19,34 @@ namespace CountriesManagement.UnitTests.Library
         public async Task GetPopulationByInitialAndYear_WhenNoErrors_ReturnNoErrors()
         {
             // Arrange
+            QueryDataDto queryDataDto = new()
+            {
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
+            };
             const int POPULATIONFORVALIDCOUNTRY = 1;
             string NAMEFORVALIDCOUNTRY = $"{VALIDCOUNTRYINITIAL}";
             Mock<ICountryPopulationRepository> mockedRepository = new();
             mockedRepository
-                .Setup(x => x.GetPopulationForAllCountries())
+                .Setup(x => x.GetPopulationByCountryInitialAndYear(VALIDCOUNTRYINITIAL, VALIDYEAR))
                 .Returns(Task.FromResult<AllCountriesPopulationEntity?>(new AllCountriesPopulationEntity
                 {
-                    Title = "",
                     Error = false,
                     Data = new List<CountryPopulationEntity>()
                     {
                         new() {
-                            Code = "",
-                            Country = NAMEFORVALIDCOUNTRY,
-                            Iso3 = "",
+                            CountryName = NAMEFORVALIDCOUNTRY,
                             PopulationListByYear = new List<PopulationByYearEntity>
                             {
                                 new() {
                                     Year = VALIDYEAR,
-                                    Value = POPULATIONFORVALIDCOUNTRY
+                                    Population = POPULATIONFORVALIDCOUNTRY
                                 }
                             }
                         }
                     }
                 }));
             CountryPopulationService sut = new(mockedRepository.Object);
-            QueryDataDto queryDataDto = new()
-            {
-                CountryInitial = VALIDCOUNTRYINITIAL,
-                Year = VALIDYEAR
-            };
 
             // Act
             GetPopByInitialAndYearRsDto? result = await sut.GetPopulationByInitialAndYear(queryDataDto);
@@ -59,9 +56,9 @@ namespace CountriesManagement.UnitTests.Library
             Assert.Null(result.errors);
             Assert.NotNull(result.data);
             Assert.Single(result.data);
-            Assert.Equal(NAMEFORVALIDCOUNTRY, result.data[0].Country);
-            Assert.Equal(VALIDYEAR, result.data[0].Year);
-            Assert.Equal(POPULATIONFORVALIDCOUNTRY, result.data[0].Population);
+            Assert.Equal(NAMEFORVALIDCOUNTRY, result.data[0].country);
+            Assert.Equal(VALIDYEAR, result.data[0].year);
+            Assert.Equal(POPULATIONFORVALIDCOUNTRY, result.data[0].population);
         }
 
         [Fact]
@@ -133,22 +130,54 @@ namespace CountriesManagement.UnitTests.Library
         }
 
         [Fact]
-        public async Task GetPopulationByInitialAndYear_WhenDbError_ReturnDbError()
+        public async Task GetPopulationByInitialAndYear_WhenJsonReturnedErrorTrue_ReturnJsonReturnedErrorTrueError()
         {
             // Arrange
-            Mock<ICountryPopulationRepository> mockedRepository = new();
-            mockedRepository
-                .Setup(x => x.GetPopulationForAllCountries())
-                .Throws<Exception>();
-            CountryPopulationService sut = new(mockedRepository.Object);
             QueryDataDto queryDataDto = new()
             {
                 CountryInitial = VALIDCOUNTRYINITIAL,
                 Year = VALIDYEAR
             };
+            string NAMEFORVALIDCOUNTRY = $"{VALIDCOUNTRYINITIAL}";
+            Mock<ICountryPopulationRepository> mockedRepository = new();
+            mockedRepository
+                .Setup(x => x.GetPopulationByCountryInitialAndYear(VALIDCOUNTRYINITIAL, VALIDYEAR))
+                .Returns(Task.FromResult<AllCountriesPopulationEntity?>(new AllCountriesPopulationEntity
+                {
+                    Error = true,
+                    Data = null
+                }));
+            CountryPopulationService sut = new(mockedRepository.Object);
 
             // Act
             GetPopByInitialAndYearRsDto? result = await sut.GetPopulationByInitialAndYear(queryDataDto);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Null(result.data);
+            Assert.NotNull(result.errors);
+            Assert.Single(result.errors);
+            Assert.Equal(GetPopByInitialAndYearErrorEnum.WebApiReturnedErrorTrue, result.errors[0]);
+        }
+
+        [Fact]
+        public async Task GetPopulationByInitialAndYear_WhenDbError_ReturnDbError()
+        {
+            // Arrange
+            QueryDataDto queryDataDto = new()
+            {
+                CountryInitial = VALIDCOUNTRYINITIAL,
+                Year = VALIDYEAR
+            };
+            Mock<ICountryPopulationRepository> mockedRepository = new();
+            mockedRepository
+                .Setup(x => x.GetPopulationByCountryInitialAndYear(VALIDCOUNTRYINITIAL, VALIDYEAR))
+                .Throws<Exception>();
+            CountryPopulationService sut = new(mockedRepository.Object);
+
+            // Act
+            GetPopByInitialAndYearRsDto? result = await sut.GetPopulationByInitialAndYear(queryDataDto);
+            //Exception ex = await Record.ExceptionAsync(async () => await sut.GetPopulationByInitialAndYear(queryDataDto));
 
             // Assert
             Assert.NotNull(result);

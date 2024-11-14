@@ -32,19 +32,27 @@ namespace CountriesManagement.Library.Impl
                 try
                 {
                     AllCountriesPopulationEntity? entity =
-                                await _countryPopulationRepository.GetPopulationForAllCountries();
+                                await _countryPopulationRepository.GetPopulationByCountryInitialAndYear(queryData.CountryInitial, queryData.Year);
                     if (entity != null)
                     {
-                        List<CountryYearPopulation> allCountriesPopForAllYears = MapEntityToDomain(entity);
-                        CountryYearPopulationList domainObjectToProcessFiltering =
-                            new(allCountriesPopForAllYears);
+                        if (!entity.Error)
+                        {
+                            List<CountryYearPopulation> allCountriesPopForAllYears = MapEntityToDomain(entity);
+                            CountryYearPopulationList domainObjectToProcessFiltering =
+                                new(allCountriesPopForAllYears);
 
-                        List<CountryYearPopulation> filteredData =
-                            domainObjectToProcessFiltering.FilterByCountryInitialAndYear(
-                                queryData.CountryInitial,
-                                queryData.Year
-                            );
-                        result.data = filteredData;
+                            List<CountryYearPopulation> filteredData =
+                                domainObjectToProcessFiltering.FilterByCountryInitialAndYear(
+                                    queryData.CountryInitial,
+                                    queryData.Year
+                                );
+                            result.data = MapDomainToDto(filteredData);
+                        }
+                        else
+                        {
+                            result.errors ??= new List<GetPopByInitialAndYearErrorEnum>();
+                            result.errors.Add(GetPopByInitialAndYearErrorEnum.WebApiReturnedErrorTrue);
+                        }
                     }
                 }
                 catch (Exception)
@@ -94,9 +102,14 @@ namespace CountriesManagement.Library.Impl
 
             return entity?.Data?.SelectMany(x =>
                 x.PopulationListByYear?.Select(y =>
-                    new CountryYearPopulation(x.Country ?? "", y.Year, y.Value)
+                    new CountryYearPopulation(x.CountryName ?? "", y.Year, y.Population)
                 ) ?? new List<CountryYearPopulation>()
             ).ToList() ?? new List<CountryYearPopulation>();
+        }
+
+        private static List<CountryYearPopulationDto> MapDomainToDto(List<CountryYearPopulation> domainModelList)
+        {
+            return domainModelList.Select(x => new CountryYearPopulationDto(x.Country, x.Year, x.Population)).ToList();
         }
     }
 }

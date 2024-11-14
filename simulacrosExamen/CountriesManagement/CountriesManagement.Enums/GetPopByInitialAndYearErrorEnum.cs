@@ -4,6 +4,7 @@
     {
         InvalidYear,
         InvalidInitial,
-        DBError
+        WebApiReturnedErrorTrue,
+        DBError,
     }
 }

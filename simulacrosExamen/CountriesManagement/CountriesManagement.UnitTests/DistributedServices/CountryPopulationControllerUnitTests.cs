@@ -27,7 +27,7 @@ namespace CountriesManagement.UnitTests.DistributedServices
                 .Setup(x => x.GetPopulationByInitialAndYear(It.IsAny<QueryDataDto>()))
                 .ReturnsAsync(new GetPopByInitialAndYearRsDto
                 {
-                    data = new List<CountryYearPopulation>
+                    data = new List<CountryYearPopulationDto>
                     {
                         new(NAMEFORVALIDCOUNTRY, VALIDYEAR, POPULATIONFORVALIDCOUNTRY)
                     }

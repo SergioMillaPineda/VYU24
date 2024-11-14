@@ -7,9 +7,6 @@ namespace CountriesManagement.Infrastructure.Contracts.Entities
         [JsonPropertyName("error")]
         public bool Error { get; set; }
 
-        [JsonPropertyName("msg")]
-        public string? Title { get; set; }
-
         [JsonPropertyName("data")]
         public List<CountryPopulationEntity>? Data { get; set; }
     }

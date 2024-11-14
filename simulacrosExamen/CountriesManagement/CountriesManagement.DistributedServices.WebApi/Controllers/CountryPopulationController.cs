@@ -36,15 +36,15 @@ namespace CountriesManagement.DistributedServices.WebApi.Controllers
             }
         }
 
-        private static object MapRsDataToOutputDesiredFormat(List<CountryYearPopulation> data, int year)
+        private static object MapRsDataToOutputDesiredFormat(List<CountryYearPopulationDto> data, int year)
         {
             return new
             {
                 Year = year,
                 PopulationByCountry = data.Select(x => new
                 {
-                    x.Country,
-                    x.Population
+                    x.country,
+                    x.population
                 })
             };
         }

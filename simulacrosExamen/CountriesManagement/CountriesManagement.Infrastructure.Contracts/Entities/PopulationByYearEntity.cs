@@ -8,6 +8,6 @@ namespace CountriesManagement.Infrastructure.Contracts.Entities
         public int Year { get; set; }
 
         [JsonPropertyName("value")]
-        public long Value { get; set; }
+        public long Population { get; set; }
     }
 }
