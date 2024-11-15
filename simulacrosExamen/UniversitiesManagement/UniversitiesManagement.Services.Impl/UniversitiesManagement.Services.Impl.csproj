@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UniversitiesManagement.Infrastructure.Contracts\UniversitiesManagement.Infrastructure.Contracts.csproj" />
+    <ProjectReference Include="..\UniversitiesManagement.Services.Contracts\UniversitiesManagement.Services.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -24,7 +24,7 @@ namespace SWApi.WebAPI.Controllers
             {
                 return BadRequest(result.errors.Select(MapErrorEnumToString));
             }
-
+            RefreshPlanetsErrorEnum.SWApiErrorConnection.ToString();
             return Ok(result.data);
         }
 

@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-DistributedServices", "1-DistributedServices", "{8A0B0B75-8312-4258-B887-18A03A9472AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Library", "2-Library", "{DCA34501-F2B4-44F3-BE86-92188F555FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{221764E2-B47F-4DF0-96B5-8BBA6D071BAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infrastructure", "4-Infrastructure", "{696F40EA-7029-48BC-9921-453A86581800}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-XCutting", "5-XCutting", "{2A95AFDB-5D54-4971-B8B3-33BF8A6C72DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Testing", "6-Testing", "{650F7ECA-9CEF-4ACC-8E9C-CEAA24B9118A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.WebApi", "UniversitiesManagement.WebApi\UniversitiesManagement.WebApi.csproj", "{783CDB9B-C268-4EE5-92E1-057B0D672E16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.Services.Contracts", "UniversitiesManagement.Services.Contracts\UniversitiesManagement.Services.Contracts.csproj", "{9F04F77C-B972-4437-B1D8-E46585D65F33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.Enums", "UniversitiesManagement.Enums\UniversitiesManagement.Enums.csproj", "{86377CDC-A6EF-4F65-8023-26239986DB7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.Services.Impl", "UniversitiesManagement.Services.Impl\UniversitiesManagement.Services.Impl.csproj", "{2979A777-6551-487E-84B9-7CCACA0A8CF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.Infrastructure.Contracts", "UniversitiesManagement.Infrastructure.Contracts\UniversitiesManagement.Infrastructure.Contracts.csproj", "{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversitiesManagement.Infrastructure.Impl", "UniversitiesManagement.Infrastructure.Impl\UniversitiesManagement.Infrastructure.Impl.csproj", "{3BA08F11-1508-436F-8980-6650B12455A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.UnitTests", "Services.UnitTests\Services.UnitTests.csproj", "{E4E61054-5104-4F46-9B93-7B1544326BE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{783CDB9B-C268-4EE5-92E1-057B0D672E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783CDB9B-C268-4EE5-92E1-057B0D672E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783CDB9B-C268-4EE5-92E1-057B0D672E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783CDB9B-C268-4EE5-92E1-057B0D672E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F04F77C-B972-4437-B1D8-E46585D65F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F04F77C-B972-4437-B1D8-E46585D65F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F04F77C-B972-4437-B1D8-E46585D65F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F04F77C-B972-4437-B1D8-E46585D65F33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86377CDC-A6EF-4F65-8023-26239986DB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86377CDC-A6EF-4F65-8023-26239986DB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86377CDC-A6EF-4F65-8023-26239986DB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86377CDC-A6EF-4F65-8023-26239986DB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2979A777-6551-487E-84B9-7CCACA0A8CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2979A777-6551-487E-84B9-7CCACA0A8CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2979A777-6551-487E-84B9-7CCACA0A8CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2979A777-6551-487E-84B9-7CCACA0A8CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA08F11-1508-436F-8980-6650B12455A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA08F11-1508-436F-8980-6650B12455A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA08F11-1508-436F-8980-6650B12455A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA08F11-1508-436F-8980-6650B12455A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E61054-5104-4F46-9B93-7B1544326BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E61054-5104-4F46-9B93-7B1544326BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E61054-5104-4F46-9B93-7B1544326BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E61054-5104-4F46-9B93-7B1544326BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{783CDB9B-C268-4EE5-92E1-057B0D672E16} = {8A0B0B75-8312-4258-B887-18A03A9472AF}
+		{9F04F77C-B972-4437-B1D8-E46585D65F33} = {DCA34501-F2B4-44F3-BE86-92188F555FA5}
+		{86377CDC-A6EF-4F65-8023-26239986DB7F} = {2A95AFDB-5D54-4971-B8B3-33BF8A6C72DA}
+		{2979A777-6551-487E-84B9-7CCACA0A8CF3} = {DCA34501-F2B4-44F3-BE86-92188F555FA5}
+		{1C703B13-5CD4-45F3-AF6A-7EB0FC84F62C} = {696F40EA-7029-48BC-9921-453A86581800}
+		{3BA08F11-1508-436F-8980-6650B12455A4} = {696F40EA-7029-48BC-9921-453A86581800}
+		{E4E61054-5104-4F46-9B93-7B1544326BE7} = {650F7ECA-9CEF-4ACC-8E9C-CEAA24B9118A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {971BC2F9-DFC4-4FEE-85CB-65AE05F93D2C}
+	EndGlobalSection
+EndGlobal
